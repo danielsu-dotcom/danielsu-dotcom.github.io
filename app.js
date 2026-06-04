@@ -39,12 +39,14 @@ function sendMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    // Send notification to Render Exteriors + auto-reply to customer
-    Promise.all([
-        emailjs.send("service_ru22am2", "template_bf6e6uk", params),
-        params.email ? emailjs.send("service_ru22am2", "template_1ww4cov", params) : Promise.resolve()
-    ])
+    // Send main notification — success/failure determines the user message
+    emailjs.send("service_ru22am2", "template_bf6e6uk", params)
         .then(() => {
+            // Auto-reply fires silently — doesn't affect success message
+            if (params.email) {
+                emailjs.send("service_ru22am2", "template_1ww4cov", params)
+                    .catch(e => console.warn("Auto-reply failed:", e));
+            }
             alert('Thank you! Your message has been sent.');
             document.getElementById("contact-form").reset();
         })
@@ -71,11 +73,12 @@ function sendeMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    Promise.all([
-        emailjs.send("service_ru22am2", "template_bf6e6uk", params),
-        params.email ? emailjs.send("service_ru22am2", "template_1ww4cov", params) : Promise.resolve()
-    ])
+    emailjs.send("service_ru22am2", "template_bf6e6uk", params)
         .then(() => {
+            if (params.email) {
+                emailjs.send("service_ru22am2", "template_1ww4cov", params)
+                    .catch(e => console.warn("Auto-reply failed:", e));
+            }
             alert('Thank you! Your message has been sent.');
             document.getElementById("form").reset();
         })
