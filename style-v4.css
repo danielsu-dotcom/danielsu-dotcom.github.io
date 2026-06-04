@@ -227,9 +227,14 @@ footer {
         margin: 0;
     }
 
-    /* Hide the "Our Services" text block inside the hero on mobile */
+    /* Our Services below form on mobile */
     .services-content {
-        display: none;
+        display: block;
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        background-color: rgba(0,0,0,0.75);
     }
 
     /* Mobile services cards block */
