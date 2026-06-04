@@ -39,7 +39,7 @@ function sendMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    emailjs.send("service_igyucx9", "template_s0wjn6s", params)
+    emailjs.send("service_ru22am2", "template_s0wjn6s", params)
         .then(() => {
             alert('Thank you! Your message has been sent.');
             document.getElementById("contact-form").reset();
@@ -67,7 +67,7 @@ function sendeMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    emailjs.send("service_igyucx9", "template_s0wjn6s", params)
+    emailjs.send("service_ru22am2", "template_s0wjn6s", params)
         .then(() => {
             alert('Thank you! Your message has been sent.');
             document.getElementById("form").reset();
