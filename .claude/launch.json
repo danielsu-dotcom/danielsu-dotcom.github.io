@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "vandam-site",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8743"],
-      "port": 8743
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["/Users/danielyu_1/Desktop/vandanpw.github.io-main/serve.sh"],
+      "autoPort": true
     }
   ]
 }

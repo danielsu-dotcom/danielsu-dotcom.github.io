@@ -185,7 +185,7 @@ footer {
 
 /* Responsive styles for mobile */
 @media screen and (max-width: 812px) {
-    /* Hide nav and button on mobile */
+    /* Hide nav and desktop quote button */
     nav, .quote-button {
         display: none;
     }
@@ -193,6 +193,33 @@ footer {
     /* Show hamburger menu */
     .hamburger {
         display: block;
+    }
+
+    /* Shrink logo for mobile */
+    .logo img {
+        height: 65px;
+    }
+
+    /* Tighten header */
+    header {
+        padding: 10px 15px;
+    }
+
+    /* Full-width Get a Free Quote button below header */
+    header::after {
+        content: '';
+    }
+
+    .mobile-cta {
+        display: block !important;
+        background-color: #4a8a7a;
+        color: black;
+        text-align: center;
+        padding: 14px;
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+        text-decoration: none;
     }
 }
 
