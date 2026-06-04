@@ -189,6 +189,11 @@ footer {
     vertical-align: middle;
 }
 
+/* Hide mobile-only elements on desktop */
+.mobile-services-block {
+    display: none;
+}
+
 @media screen and (max-width: 812px) {
     /* Hide nav and desktop quote button */
     nav, .quote-button {
@@ -210,24 +215,54 @@ footer {
         padding: 10px 15px;
     }
 
-    /* Show form FIRST on mobile, services second */
+    /* Form takes full width on mobile, services-content hidden (replaced by cards below) */
     .services-section {
         flex-direction: column;
         height: auto;
     }
 
     #contact-form {
-        order: -1;
         width: 100%;
         max-width: 100%;
         margin: 0;
     }
 
+    /* Hide the "Our Services" text block inside the hero on mobile */
     .services-content {
-        order: 1;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
+        display: none;
+    }
+
+    /* Mobile services cards block */
+    .mobile-services-block {
+        display: block !important;
+        background-color: #1a1a1a;
+        padding: 30px 20px;
+        color: #e8dcc8;
+    }
+
+    .mobile-services-block h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .mobile-services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .mobile-service-card {
+        background-color: #252525;
+        border: 1px solid #4a8a7a;
+        color: #e8dcc8;
+        text-align: center;
+        padding: 20px 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        display: block;
     }
 }
 
