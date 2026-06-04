@@ -181,12 +181,20 @@ footer {
     width: 45%;
 }
 
+/* Footer contact rows — icon stays aligned with text */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
 /* Footer Icons */
 .icon {
     width: 20px;
     height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
+    flex-shrink: 0;
 }
 
 /* Hide mobile-only elements on desktop */
