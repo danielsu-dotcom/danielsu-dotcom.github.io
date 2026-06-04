@@ -39,13 +39,17 @@ function sendMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    emailjs.send("service_ru22am2", "template_bf6e6uk", params)
+    // Send notification to Render Exteriors + auto-reply to customer
+    Promise.all([
+        emailjs.send("service_ru22am2", "template_bf6e6uk", params),
+        params.email ? emailjs.send("service_ru22am2", "template_1ww4cov", params) : Promise.resolve()
+    ])
         .then(() => {
             alert('Thank you! Your message has been sent.');
             document.getElementById("contact-form").reset();
         })
         .catch((error) => {
-            console.error("Error:", error); // Log the error
+            console.error("Error:", error);
             alert('Oops! Something went wrong. Please try again.');
         })
         .finally(() => {
@@ -67,13 +71,16 @@ function sendeMail(){
     button.textContent = 'Sending...';
     button.disabled = true;
 
-    emailjs.send("service_ru22am2", "template_bf6e6uk", params)
+    Promise.all([
+        emailjs.send("service_ru22am2", "template_bf6e6uk", params),
+        params.email ? emailjs.send("service_ru22am2", "template_1ww4cov", params) : Promise.resolve()
+    ])
         .then(() => {
             alert('Thank you! Your message has been sent.');
             document.getElementById("form").reset();
         })
         .catch((error) => {
-            console.error("Error:", error); // Log the error
+            console.error("Error:", error);
             alert('Oops! Something went wrong. Please try again.');
         })
         .finally(() => {
