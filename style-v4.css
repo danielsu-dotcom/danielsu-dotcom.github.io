@@ -189,12 +189,6 @@ footer {
     vertical-align: middle;
 }
 
-/* Responsive styles for mobile */
-/* Mobile hero — hidden on desktop */
-.mobile-hero {
-    display: none;
-}
-
 @media screen and (max-width: 812px) {
     /* Hide nav and desktop quote button */
     nav, .quote-button {
@@ -216,46 +210,24 @@ footer {
         padding: 10px 15px;
     }
 
-    /* Full-screen mobile hero */
-    .mobile-hero {
-        display: flex;
+    /* Show form FIRST on mobile, services second */
+    .services-section {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #1a1a1a;
-        background-image: url('images/pressure_wash.jpeg');
-        background-size: cover;
-        background-position: center;
-        min-height: calc(100vh - 75px);
-        padding: 40px 24px;
-        text-align: center;
-        gap: 24px;
+        height: auto;
     }
 
-    .mobile-hero img {
-        width: 80%;
-        max-width: 320px;
-    }
-
-    .mobile-hero h2 {
-        color: #e8dcc8;
-        font-size: 22px;
-        font-weight: bold;
-        text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    #contact-form {
+        order: -1;
+        width: 100%;
+        max-width: 100%;
         margin: 0;
     }
 
-    .mobile-hero-btn {
-        background-color: #4a8a7a;
-        color: white;
-        padding: 18px 32px;
-        border-radius: 8px;
-        font-size: 20px;
-        font-weight: bold;
-        text-decoration: none;
-        display: block;
+    .services-content {
+        order: 1;
         width: 100%;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        max-width: 100%;
+        margin: 0;
     }
 }
 
