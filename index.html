@@ -44,7 +44,7 @@
         </nav>
     
         <div class="quote-button">
-            <a href="contact.html">Get a Free Quote</a>
+            <a href="contact.html">Get a Quote</a>
         </div>
     
         <div class="hamburger" onclick="toggleMenu()">☰</div>    
@@ -62,36 +62,65 @@
                     </div>
                 </li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Get a Free Quote</a></li>
+                <li><a href="contact.html">Get a Quote</a></li>
             </ul>
         </div>
     </header>
     <div class="center">
         <!-- Form section — full width on mobile, right side on desktop -->
         <div class="services-section">
+          <div class="hero-panel">
             <div class="services-content">
-                <h2>Our Services</h2>
-                <p>We specialize in providing top-quality residential property maintenance services to keep your home looking pristine and well-maintained. Whether you're in Richmond, Vancouver, or Delta, our expert team is here to ensure your property stands out with exceptional curb appeal and remains in excellent condition year-round.</p>
+                <h2 class="hero-headline">Exterior care for Richmond's finest homes.</h2>
+                <p class="hero-cred">Locally Operated &nbsp;·&nbsp; 5.0 <span class="hero-star">★</span> on Google</p>
+                <p class="hero-cred hero-cred-location">Serving Richmond, Vancouver &amp; Delta</p>
+                <p class="hero-phone"><a href="tel:7785128078">Call us — (778) 512-8078</a></p>
             </div>
             <form id="contact-form">
-                <h2>Request a Free Estimate Today!</h2>
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Name" required>
+                <h2>Request an Estimate Today!</h2>
+                <input type="hidden" name="services" id="selected-services-input">
+
+                <!-- Stage 1: Service selection + address -->
+                <div id="stage-1">
+                    <p class="stage-label">Step 1 of 2 — Select your services</p>
+                    <div class="service-cards-grid">
+                        <div class="service-card" data-service="Pressure Washing"><span class="card-check">✓</span>Pressure Washing</div>
+                        <div class="service-card" data-service="House Washing"><span class="card-check">✓</span>House Washing</div>
+                        <div class="service-card" data-service="Gutter Cleaning"><span class="card-check">✓</span>Gutter Cleaning</div>
+                        <div class="service-card" data-service="Roof Washing"><span class="card-check">✓</span>Roof Washing</div>
+                        <div class="service-card" data-service="Window Cleaning"><span class="card-check">✓</span>Window Cleaning</div>
+                        <div class="service-card" data-service="Moss Removal"><span class="card-check">✓</span>Moss Removal</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="address" id="address-input" placeholder="Address">
+                    </div>
+                    <div class="form-error" id="stage1-error"></div>
+                    <button type="button" class="contact-button" id="next-btn">Next →</button>
                 </div>
-                <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+
+                <!-- Stage 2: Contact details -->
+                <div id="stage-2" style="display:none">
+                    <p class="stage-label">Step 2 of 2 — Your contact details</p>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name*">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number*">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Anything we should know?" rows="3"></textarea>
+                    </div>
+                    <div class="form-error" id="stage2-error"></div>
+                    <div class="stage2-actions">
+                        <button type="button" class="back-btn" id="back-btn">← Back</button>
+                        <button type="button" class="contact-button" id="submit-btn">Get My Free Quote</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="address" name="address" placeholder="Address">
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
-                </div>
-                <button type="button" class="contact-button" onclick="sendMail()">Send Message</button>
             </form>
+          </div><!-- /.hero-panel -->
         </div>
 
         <div class="why-choose-us">

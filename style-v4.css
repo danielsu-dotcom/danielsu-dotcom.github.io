@@ -223,26 +223,21 @@ footer {
         padding: 10px 15px;
     }
 
-    /* Form takes full width on mobile, services-content hidden (replaced by cards below) */
+    /* Stack hero panel vertically on mobile */
     .services-section {
+        padding: 24px 16px;
+    }
+
+    .hero-panel {
         flex-direction: column;
-        height: auto;
+    }
+
+    .services-content {
+        padding: 32px 24px;
     }
 
     #contact-form {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-    }
-
-    /* Our Services below form on mobile */
-    .services-content {
-        display: block;
-        order: 1;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        background-color: rgba(0,0,0,0.75);
+        padding: 24px 20px 20px;
     }
 
     /* Mobile services cards block */
@@ -283,47 +278,45 @@ footer {
 
 /* Services section styling */
 .services-section {
-    background-image: url('images/pressure_wash.jpeg'); /* Add your image path here */
+    background-image: url('images/luxury-home.jpg');
     background-size: cover;
     background-position: center;
-    height: 500px; /* Adjust height as needed */
+    min-height: 500px;
     display: flex;
     align-items: center;
-    justify-content: space-around; /* Add more space between text and form */
-    padding: 20px;
+    justify-content: center;
+    padding: 48px 24px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
 }
 
-/* Services content styling */
+/* Unified two-tone hero panel */
+.hero-panel {
+    display: flex;
+    width: 100%;
+    max-width: 1080px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Left dark panel — hero copy */
 .services-content {
-    max-width: 45%; /* Slightly reduce width for more spacing */
-    background-color: rgba(1, 1, 1, 0.7); /* Semi-transparent background */
-    padding: 20px;
-    border-radius: 10px;
+    flex: 1;
+    background-color: rgba(14, 9, 6, 0.70);
+    padding: 48px 40px;
     color: white;
-    margin-right: 20px; /* Add space between text and form */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.services-content h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.services-content p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-/* Form styling */
+/* Right cream panel — form */
 #contact-form {
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding: 0px 20px 20px;
-    border-radius: 10px;
-    width: 45%; 
-    color: white;
-    margin-left: 20px;
+    flex: 1;
+    background-color: rgba(248, 242, 234, 0.91);
+    padding: 32px 28px 28px;
+    color: #1F1F1D;
 }
 
 .form-group {
@@ -364,26 +357,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    .services-section {
-        flex-direction: column; 
-        height: auto; 
-        padding: 10px;
-    }
-
-    .services-content, #contact-form {
-        max-width: 100%; 
-        width: 100%;
-        margin: 0 0 20px 0; 
-    }
-
-    .services-content h2 {
-        font-size: 28px; 
-    }
-
-    .services-content p {
-        font-size: 16px;
-    }
-
     .contact-button {
         font-size: 16px;
     }
@@ -1444,5 +1417,272 @@ footer {
         font-size: 30px;
         top: 10px;
         right: 20px;
+    }
+}
+
+/* ============================================================
+   Two-Stage Quote Form
+   ============================================================ */
+
+.stage-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 12px;
+    letter-spacing: 0.4px;
+}
+
+/* Service toggle card grid */
+.service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.service-card {
+    position: relative;
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.3;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.service-card:hover {
+    border-color: rgba(74, 138, 122, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.service-card.active {
+    border-color: #4a8a7a;
+    background-color: rgba(74, 138, 122, 0.22);
+}
+
+.card-check {
+    display: none;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a8a7a;
+    line-height: 1;
+}
+
+.service-card.active .card-check {
+    display: block;
+}
+
+/* Inline validation error */
+.form-error {
+    color: #ff6b6b;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 8px;
+}
+
+/* Back button */
+.back-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.back-btn:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Stage 2 button row */
+.stage2-actions {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    margin-top: 6px;
+}
+
+.stage2-actions .contact-button {
+    flex: 1;
+    max-width: none;
+}
+
+/* Light-background overrides for contact_page */
+.contact_page .stage-label {
+    color: #777;
+}
+
+.contact_page .service-card {
+    background-color: #efefef;
+    border-color: #d0d0d0;
+    color: #333;
+}
+
+.contact_page .service-card:hover {
+    border-color: rgba(74, 138, 122, 0.6);
+    background-color: rgba(74, 138, 122, 0.08);
+}
+
+.contact_page .service-card.active {
+    border-color: #4a8a7a;
+    background-color: rgba(74, 138, 122, 0.14);
+}
+
+.contact_page .form-error {
+    color: #c0392b;
+}
+
+.contact_page .back-btn {
+    color: #555;
+    border-color: #bbb;
+}
+
+.contact_page .back-btn:hover {
+    color: #222;
+    border-color: #888;
+}
+
+.contact_page .stage2-actions .contact-button {
+    max-width: none;
+}
+
+/* Mobile: 2-col card grid */
+@media screen and (max-width: 768px) {
+    .service-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================================
+   Hero text (left side of services section)
+   ============================================================ */
+
+.hero-headline {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.hero-cred {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    line-height: 1.5;
+}
+
+.hero-cred-location {
+    margin: 0 0 16px;
+}
+
+.hero-star {
+    font-family: Georgia, serif;
+    color: #F5C842;
+    font-size: 1em;
+    position: relative;
+    top: -1px;
+    line-height: 1;
+}
+
+.hero-phone {
+    font-size: 0.95rem;
+    color: white;
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.hero-phone a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+}
+
+.hero-phone a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Light form card overrides (#contact-form on homepage)
+   ============================================================ */
+
+#contact-form h2 {
+    color: #1F1F1D;
+}
+
+#contact-form .stage-label {
+    color: #555;
+}
+
+#contact-form .form-error {
+    color: #b91c1c;
+}
+
+#contact-form .service-card {
+    background-color: #F0EEEA;
+    border: 1px solid #D0CEC9;
+    color: #1F1F1D;
+}
+
+#contact-form .service-card:hover {
+    border-color: #7A8A6F;
+    background-color: #E8E6E0;
+}
+
+#contact-form .service-card.active {
+    border: 2px solid #7A8A6F;
+    background-color: rgba(122, 138, 111, 0.1);
+}
+
+#contact-form .card-check {
+    color: #7A8A6F;
+}
+
+#contact-form .form-group input,
+#contact-form .form-group textarea {
+    background-color: white;
+    border: 1px solid #D0CEC9;
+    color: #1F1F1D;
+}
+
+#contact-form .form-group input:focus,
+#contact-form .form-group textarea:focus {
+    border-color: #7A8A6F;
+    box-shadow: 0 0 0 2px rgba(122, 138, 111, 0.2);
+}
+
+#contact-form .back-btn {
+    color: #555;
+    border-color: #ccc;
+}
+
+#contact-form .back-btn:hover {
+    color: #1F1F1D;
+    border-color: #999;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-headline {
+        font-size: 1.6rem;
     }
 }

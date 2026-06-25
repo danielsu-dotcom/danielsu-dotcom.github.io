@@ -82,6 +82,130 @@ function sendeMail(){
         });
 }
 
+// Two-stage quote form logic
+(function initTwoStageForm() {
+    const stage1 = document.getElementById('stage-1');
+    if (!stage1) return;
+
+    const stage2 = document.getElementById('stage-2');
+    const nextBtn = document.getElementById('next-btn');
+    const backBtn = document.getElementById('back-btn');
+    const stage1Error = document.getElementById('stage1-error');
+    const stage2Error = document.getElementById('stage2-error');
+    const servicesInput = document.getElementById('selected-services-input');
+    const addressInput = document.getElementById('address-input');
+
+    function updateServicesInput() {
+        const selected = Array.from(document.querySelectorAll('.service-card.active'))
+            .map(c => c.dataset.service);
+        servicesInput.value = selected.join(', ');
+    }
+
+    function fadeOut(el, cb) {
+        el.style.transition = 'opacity 0.22s ease';
+        el.style.opacity = '0';
+        setTimeout(function () {
+            el.style.display = 'none';
+            el.style.opacity = '';
+            el.style.transition = '';
+            if (cb) cb();
+        }, 230);
+    }
+
+    function fadeIn(el) {
+        el.style.display = 'block';
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.22s ease';
+        setTimeout(function () { el.style.opacity = '1'; }, 10);
+        setTimeout(function () { el.style.opacity = ''; el.style.transition = ''; }, 240);
+    }
+
+    document.querySelectorAll('.service-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            this.classList.toggle('active');
+            updateServicesInput();
+        });
+    });
+
+    nextBtn.addEventListener('click', function () {
+        const selected = document.querySelectorAll('.service-card.active');
+        const address = addressInput ? addressInput.value.trim() : '';
+
+        if (selected.length === 0 && !address) {
+            stage1Error.textContent = 'Please select at least one service and enter your property address.';
+            return;
+        }
+        if (selected.length === 0) {
+            stage1Error.textContent = 'Please select at least one service.';
+            return;
+        }
+        if (!address) {
+            stage1Error.textContent = 'Please enter your property address.';
+            return;
+        }
+
+        stage1Error.textContent = '';
+        fadeOut(stage1, function () { fadeIn(stage2); });
+    });
+
+    backBtn.addEventListener('click', function () {
+        stage2Error.textContent = '';
+        fadeOut(stage2, function () { fadeIn(stage1); });
+    });
+
+    const form = stage1.closest('form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    submitBtn.addEventListener('click', function () {
+        const nameInput = form.querySelector('[name="name"]');
+        const phoneInput = form.querySelector('[name="phone"]');
+
+        if (!nameInput.value.trim()) {
+            stage2Error.textContent = 'Please enter your name.';
+            return;
+        }
+        if (!phoneInput.value.trim()) {
+            stage2Error.textContent = 'Please enter your phone number.';
+            return;
+        }
+
+        stage2Error.textContent = '';
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        var services = servicesInput.value;
+        var message = form.querySelector('[name="message"]').value;
+        if (services) message = 'Services: ' + services + (message ? '\n\n' + message : '');
+
+        var params = {
+            name: nameInput.value,
+            phone: phoneInput.value,
+            email: form.querySelector('[name="email"]').value,
+            address: addressInput ? addressInput.value : '',
+            message: message
+        };
+
+        emailjs.send('service_ru22am2', 'template_bf6e6uk', params)
+            .then(function () {
+                alert("Thank you! We'll be in touch soon.");
+                form.reset();
+                document.querySelectorAll('.service-card').forEach(function (c) {
+                    c.classList.remove('active');
+                });
+                servicesInput.value = '';
+                fadeOut(stage2, function () { fadeIn(stage1); });
+            })
+            .catch(function (error) {
+                console.error('EmailJS error:', error);
+                stage2Error.textContent = 'Something went wrong. Please call us at (778) 512-8078.';
+            })
+            .finally(function () {
+                submitBtn.textContent = 'Get My Free Quote';
+                submitBtn.disabled = false;
+            });
+    });
+})();
+
 // Gallery Lightbox Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = document.querySelectorAll('.gallery img');
