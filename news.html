@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>News | Render Exteriors Richmond BC</title>
+    <link rel="stylesheet" href="style-v4.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({ publicKey: "zHgX3Rh4FEUz6nxAH" });
+        })();
+    </script>
+    <link rel="canonical" href="https://renderexteriors.ca/news.html">
+    <style>
+        .news-section {
+            background: #f5f0e8;
+            padding: 64px 0 80px;
+        }
+        .news-section h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 0 0 8px;
+        }
+        .news-section .news-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 48px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px 28px;
+            border: 1px solid #e0d9cf;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .news-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+            transform: translateY(-2px);
+        }
+        .news-tag {
+            display: inline-block;
+            background: #4a8a7a;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            width: fit-content;
+        }
+        .news-card h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin: 0 0 12px;
+        }
+        .news-card p {
+            font-size: 15px;
+            color: #44403c;
+            line-height: 1.65;
+            margin: 0 0 20px;
+            flex: 1;
+        }
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: #888;
+            padding-top: 16px;
+            border-top: 1px solid #e8e0d4;
+        }
+        .news-meta-dot {
+            width: 3px;
+            height: 3px;
+            background: #bbb;
+            border-radius: 50%;
+        }
+        .news-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4a8a7a;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 4px;
+        }
+        .news-read-more:hover {
+            color: #3d7a6a;
+        }
+        .news-read-more svg {
+            transition: transform 0.15s;
+        }
+        .news-read-more:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Modal overlay */
+        .post-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 16px;
+        }
+        .post-overlay.open {
+            display: block;
+        }
+        .post-modal {
+            background: #fff;
+            max-width: 760px;
+            margin: 0 auto;
+            border-radius: 12px;
+            padding: 48px 48px 40px;
+            position: relative;
+        }
+        .post-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+        .post-close:hover { color: #1a1a1a; }
+        .post-modal .post-tag {
+            display: inline-block;
+            background: #4a8a7a;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        .post-modal h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.35;
+            margin: 0 0 12px;
+        }
+        .post-modal .post-meta {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8e0d4;
+        }
+        .post-modal .post-body {
+            font-size: 16px;
+            color: #2c2c2c;
+            line-height: 1.75;
+        }
+        .post-modal .post-body h2 {
+            font-size: 19px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 32px 0 10px;
+        }
+        .post-modal .post-body p {
+            margin: 0 0 16px;
+        }
+        .post-modal .post-body strong {
+            color: #1a1a1a;
+        }
+        .post-modal .post-body a {
+            color: #4a8a7a;
+            text-decoration: underline;
+        }
+        .post-cta {
+            margin-top: 32px;
+            padding: 20px 24px;
+            background: #f0ece4;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1a1a1a;
+        }
+        .post-cta a {
+            color: #4a8a7a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 720px) {
+            .news-grid { grid-template-columns: 1fr; }
+            .post-modal { padding: 32px 20px 28px; }
+            .news-section h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/render-logo.png?v=5" alt="Power Wash Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="services/gutter-cleaning.html">Gutter Cleaning</a>
+                        <a href="services/roof-washing.html">Roof Washing</a>
+                        <a href="services/house-washing.html">House Washing</a>
+                        <a href="services/pressure-washing.html">Pressure Washing</a>
+                    </div>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+        <div class="quote-button">
+            <a href="contact.html">Get a Quote</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="services/gutter-cleaning.html">Gutter Cleaning</a>
+                        <a href="services/roof-washing.html">Roof Washing</a>
+                        <a href="services/house-washing.html">House Washing</a>
+                        <a href="services/pressure-washing.html">Pressure Washing</a>
+                    </div>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Get a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="section-inner">
+            <h1>News &amp; Updates</h1>
+            <p class="news-subtitle">Tips, guides, and local updates from Render Exteriors.</p>
+
+            <div class="news-grid">
+
+                <!-- Post 1: Most recent — June 20 -->
+                <div class="news-card" onclick="openPost('post-water')">
+                    <span class="news-tag">Local Info</span>
+                    <h2>Can You Get Exterior Cleaning Done During Metro Vancouver's Stage 3 Water Restrictions?</h2>
+                    <p>Stage 3 water restrictions are in effect until October 15. Most homeowners assume exterior cleaning is off the table. It isn't — moss removal, algae cleaning, and slip-hazard work still qualify.</p>
+                    <div class="news-meta">
+                        <span>June 20, 2026</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 min read</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-water')">
+                        Read more
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 2 — June 5 -->
+                <div class="news-card" onclick="openPost('post-strata')">
+                    <span class="news-tag">Strata</span>
+                    <h2>Preparing Your Strata's Exterior Before the July 2026 Depreciation Report</h2>
+                    <p>BC's updated strata depreciation report requirements took effect July 2026. Exterior condition affects reserve fund projections. Here's what to document before your assessor arrives.</p>
+                    <div class="news-meta">
+                        <span>June 5, 2026</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 min read</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-strata')">
+                        Read more
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 3 — May 14 -->
+                <div class="news-card" onclick="openPost('post-softwash')">
+                    <span class="news-tag">How It Works</span>
+                    <h2>Softwash vs Pressure Washing: What Richmond Roofs Actually Need</h2>
+                    <p>Pressure washing a roof voids your warranty and strips the granule coating off your shingles. Here's why softwash is the manufacturer-recommended method for moss removal in Richmond.</p>
+                    <div class="news-meta">
+                        <span>May 14, 2026</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 min read</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-softwash')">
+                        Read more
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 4: Oldest — April 28 -->
+                <div class="news-card" onclick="openPost('post-moss')">
+                    <span class="news-tag">Roof Care</span>
+                    <h2>Why Roof Moss Keeps Coming Back (And What Actually Stops It)</h2>
+                    <p>Richmond roofs grow moss faster than almost anywhere else in Metro Vancouver. Here's how moss damages shingles, why brushing alone doesn't work, and what treatment actually prevents regrowth.</p>
+                    <div class="news-meta">
+                        <span>April 28, 2026</span>
+                        <span class="news-meta-dot"></span>
+                        <span>3 min read</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-moss')">
+                        Read more
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── POST MODALS ── -->
+
+    <!-- Moss Post -->
+    <div class="post-overlay" id="post-moss" onclick="closePost(event, 'post-moss')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-moss')">&times;</button>
+            <span class="post-tag">Roof Care</span>
+            <h1>Why Roof Moss Keeps Coming Back (And What Actually Stops It)</h1>
+            <div class="post-meta">April 28, 2026 &nbsp;&middot;&nbsp; 3 min read</div>
+            <div class="post-body">
+                <p>Richmond roofs grow moss faster than almost anywhere else in Metro Vancouver. The city sits at sea level, receives over 1,100mm of annual rainfall, and has a dense tree canopy over many residential neighbourhoods. North-facing roof sections can stay damp for weeks at a time.</p>
+                <p>Moss thrives in exactly those conditions.</p>
+                <h2>What Moss Actually Does to Your Roof</h2>
+                <p>The visible green layer is the surface of a colony that's also growing underneath. Moss anchors to shingles with rhizoids — hair-like root structures — that work into the spaces between granules and along the shingle edges. As the colony expands, it lifts the adhesive strip that bonds each shingle to the one below.</p>
+                <p>Once that seal is broken, water gets under the shingle during rain. It pools, freezes in cold snaps, and expands. The decking below absorbs the moisture. Over several seasons, this leads to rot in the roof deck itself. Replacing damaged decking typically costs more than a decade of regular cleaning.</p>
+                <p>The granule coating on asphalt shingles protects the mat from UV degradation. Moss retains moisture against the granule surface, accelerating granule loss and reducing the shingle's effective lifespan.</p>
+                <h2>Why Brushing Doesn't Work</h2>
+                <p>Dry brushing or scraping removes the visible moss but leaves the rhizoids attached to the shingle surface. Within one growing season — typically the following autumn — the colony regrows from the root structures that were never treated.</p>
+                <p>Physical removal without chemical treatment is maintenance theatre. It looks effective immediately and accomplishes little within 12 months.</p>
+                <h2>What Softwash Treatment Does</h2>
+                <p>Softwash applies a diluted sodium hypochlorite solution at low pressure. The solution penetrates the moss colony and kills it at the biological level — rhizoids included. Growth stops immediately. Over the following weeks, rain rinses the dead material from the surface without any scrubbing or mechanical contact with the shingles.</p>
+                <p>Because the root structures are killed rather than disturbed, regrowth slows noticeably. A properly treated roof typically stays clean for two to four years in Richmond's climate, depending on tree coverage and sun exposure on the treated sections.</p>
+                <h2>What Extends the Interval</h2>
+                <p><strong>Tree overhang</strong> — branches dropping debris onto the roof and blocking sunlight accelerate regrowth. Trimming back overhanging branches is the most effective thing a homeowner can do to extend a clean roof.</p>
+                <p><strong>Zinc or copper strips</strong> — installed at the ridge, these leach trace metal ions downslope during rain. Moss and algae are sensitive to copper and zinc; the runoff suppresses regrowth on the sections below. Not a substitute for cleaning an active colony, but effective as a long-term preventative.</p>
+                <p><strong>Roof pitch and orientation</strong> — steeper pitches and south-facing sections dry faster and accumulate less growth. North-facing sections of a low-pitch roof will always need more frequent attention in Richmond.</p>
+                <h2>When to Book</h2>
+                <p>Moss removal can be done year-round. The most effective timing is autumn — treatment applied before the main growing season (November through March) means the colony is killed before it has its most productive growth period. Spring treatment is the most popular because the problem is most visible, but autumn is more efficient.</p>
+                <p>Roof moss removal in Richmond typically runs $400–$800 depending on roof size and access. That's a fraction of what shingle or decking repair costs once water intrusion has had time to work.</p>
+            </div>
+            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> or call Daniel directly.</div>
+        </div>
+    </div>
+
+    <!-- Softwash Post -->
+    <div class="post-overlay" id="post-softwash" onclick="closePost(event, 'post-softwash')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-softwash')">&times;</button>
+            <span class="post-tag">How It Works</span>
+            <h1>Softwash vs Pressure Washing: What Richmond Roofs Actually Need</h1>
+            <div class="post-meta">May 14, 2026 &nbsp;&middot;&nbsp; 2 min read</div>
+            <div class="post-body">
+                <p>Most homeowners searching for roof cleaning find the same two terms: softwash and pressure washing. They sound like two versions of the same service. They aren't.</p>
+                <p>Using the wrong one on a Richmond roof causes damage that a warranty won't cover.</p>
+                <h2>What Pressure Washing Does to Asphalt Shingles</h2>
+                <p>Pressure washing forces water through a nozzle at high PSI. On driveways and concrete — hard, dense, non-porous surfaces — high pressure is appropriate. On asphalt shingles, it strips the granule coating that protects the underlying mat from UV exposure. Those granules don't grow back.</p>
+                <p>The Canadian Asphalt Shingle Manufacturers' Association (CASMA) advises against pressure washing for this reason. Many shingle warranties explicitly exclude damage caused by high-pressure cleaning. If your roof is under warranty and gets pressure washed, you may be voiding coverage you paid for.</p>
+                <h2>How Softwash Works</h2>
+                <p>Softwash uses low pressure — typically under 100 PSI, compared to 2,000–4,000 PSI for a pressure washer — combined with a diluted sodium hypochlorite solution. The chemical does the work, not the force.</p>
+                <p>Applied to a moss-covered roof, the solution kills the moss, lichen, and algae at the biological level. Growth dies within days. Over the following weeks, rain naturally rinses the dead material off the surface. No scrubbing, no granule loss, no mechanical stress on the shingles.</p>
+                <p>The result lasts two to four years longer than pressure washing because the organisms are eliminated, not just dislodged.</p>
+                <h2>Why Richmond Roofs Need This More Than Most</h2>
+                <p>Richmond sits at sea level in a coastal climate with over 1,100mm of annual rainfall. North-facing roof sections stay damp for extended periods, and moss spores travel on wind from neighbouring properties. Once established, a moss colony spreads across the roof's moisture-retaining zones — typically the north face and any section shaded by trees.</p>
+                <p>Left untreated, moss roots work into the spaces between shingles, lifting the adhesive seal and allowing water intrusion. What starts as a cosmetic issue becomes a rot issue. Softwash treatment runs a few hundred dollars. Replacing deteriorated decking runs into the thousands.</p>
+                <h2>When Pressure Washing Is the Right Call</h2>
+                <p>On concrete, pavers, and hard driveways — high pressure is appropriate and effective. These surfaces don't have granule coatings or adhesive seals to protect. They benefit from mechanical force because moss and algae roots anchor into porous surfaces that chemical solutions penetrate more slowly.</p>
+                <p>The rule: hard impermeable surfaces get pressure. Roofs, siding, and painted surfaces get softwash.</p>
+                <h2>What to Ask Any Cleaning Company</h2>
+                <p>Before booking a roof cleaning, ask whether they use true low-pressure softwash or whether they call pressure washing "soft wash" because they lowered the PSI slightly. The difference is whether they're applying chemical treatment or just water.</p>
+                <p>Render Exteriors uses a two-tank proportioner system for softwash delivery. The SH concentration is calibrated per job based on moss density and roof material. Concrete jobs use high-pressure equipment.</p>
+            </div>
+            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a></div>
+        </div>
+    </div>
+
+    <!-- Strata Post -->
+    <div class="post-overlay" id="post-strata" onclick="closePost(event, 'post-strata')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-strata')">&times;</button>
+            <span class="post-tag">Strata</span>
+            <h1>Preparing Your Strata's Exterior Before the July 2026 Depreciation Report</h1>
+            <div class="post-meta">June 5, 2026 &nbsp;&middot;&nbsp; 2 min read</div>
+            <div class="post-body">
+                <p>BC's Strata Property Act requires strata corporations of more than five strata lots to obtain a depreciation report every three years. For Metro Vancouver, Fraser Valley, and Capital Regional District stratas, the updated requirements took effect July 2026.</p>
+                <p>A depreciation report projects the remaining lifespan and replacement cost of every major building component. Exterior surfaces — roofing, cladding, gutters, concrete walkways — are among the highest-cost line items. How well they've been maintained directly affects the reserve fund contributions the report will recommend.</p>
+                <h2>How Cleaning Affects the Report</h2>
+                <p>Depreciation reports assess visible condition and maintenance history alongside technical inspection data. A roof with active moss growth reads as neglected, regardless of actual shingle age. An algae-stained facade shortens the assessor's estimated remaining lifespan for the cladding system.</p>
+                <p>Regular documented cleaning does the opposite. It demonstrates that the strata has maintained its components, which extends projected lifespans, reduces replacement cost estimates, and supports lower reserve fund contributions. A roof assessed as well-maintained at year 12 carries a different replacement timeline than one assessed as neglected at year 12.</p>
+                <h2>What Documentation to Provide</h2>
+                <p>When a depreciation assessor visits, have the following ready for exterior components:</p>
+                <p>Service records for any roof cleaning or moss removal completed in the last three years, with dates and method used. Before/after photos from cleaning work — most professional companies provide these. Any manufacturer warranty documentation that specifies maintenance requirements.</p>
+                <p>Render Exteriors provides written service records and dated before/after photography with every strata job. These go directly into your maintenance file.</p>
+                <h2>The AGM Conversation</h2>
+                <p>Strata councils face an easier AGM when exterior maintenance is visible and documented. Owners pushing back on reserve fund contributions are more persuaded by photographic evidence of maintained components than by line items in a report they didn't commission.</p>
+                <p>A completed exterior cleaning before the report — with documentation — gives the council something concrete to present.</p>
+                <h2>Timing</h2>
+                <p>Depreciation assessments are scheduled by the strata corporation. If your assessment is this summer or fall, booking exterior cleaning now allows time for the work to be completed and documentation assembled before the assessor arrives.</p>
+                <p>For large strata complexes, scheduling in June or July is advisable. Demand increases as councils realise the deadline is close.</p>
+            </div>
+            <div class="post-cta">Strata inquiries: <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> — Daniel provides in-person estimates for strata properties and delivers dated before/after documentation with every job.</div>
+        </div>
+    </div>
+
+    <!-- Water Restrictions Post -->
+    <div class="post-overlay" id="post-water" onclick="closePost(event, 'post-water')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-water')">&times;</button>
+            <span class="post-tag">Local Info</span>
+            <h1>Can You Get Exterior Cleaning Done During Metro Vancouver's Stage 3 Water Restrictions?</h1>
+            <div class="post-meta">June 20, 2026 &nbsp;&middot;&nbsp; 2 min read</div>
+            <div class="post-body">
+                <p>Metro Vancouver moved to Stage 3 water restrictions on June 8, 2026. They stay in place until October 15. Aesthetic washing — driveways, cars, decorative surfaces — is prohibited. Most homeowners assume that means exterior cleaning is off the table entirely.</p>
+                <p>It isn't.</p>
+                <h2>What Stage 3 Actually Restricts</h2>
+                <p>The Metro Vancouver Drinking Water Conservation By-law prohibits washing impermeable surfaces for cosmetic purposes. What it permits is commercial cleaning for health and safety reasons, or when preparing a surface for painting or similar treatment.</p>
+                <p>That distinction matters for homeowners with moss on their roofs, algae on their concrete, or organic growth on their siding.</p>
+                <h2>What Still Qualifies</h2>
+                <p><strong>Roof moss and algae removal</strong> qualifies as health and safety work. Moss traps moisture against shingles, accelerates rot, and can void manufacturer warranties. The Canadian Asphalt Shingle Manufacturers' Association (CASMA) recommends moss removal as part of routine roof care precisely because moss causes structural damage over time.</p>
+                <p><strong>Concrete moss and algae removal</strong> qualifies as slip-hazard mitigation. Wet algae on driveways, walkways, and patio surfaces creates genuine fall risk. Cleaning it is a safety measure.</p>
+                <p><strong>Surface preparation for sealing or painting</strong> qualifies. If you're planning to seal your driveway or repaint your siding, professional cleaning is a permitted pre-treatment step.</p>
+                <p><strong>What doesn't qualify:</strong> purely cosmetic washing — cleaning a driveway or fence that isn't a hazard and isn't being prepped for treatment.</p>
+                <h2>The Softwash Difference</h2>
+                <p>Softwash uses a fraction of the water that pressure washing does. Rather than mechanical force, it relies on low-concentration sodium hypochlorite solutions that kill moss, algae, and lichen at the root. The biological growth dies and gradually sheds over several weeks.</p>
+                <p>Render Exteriors operates a two-tank softwash system designed for low-water application. On roof jobs during the restriction period, we carry water in onboard tanks rather than drawing from your home's supply, which keeps the service both compliant and uninterrupted.</p>
+                <h2>Book Before October 15</h2>
+                <p>Restrictions lift on October 15, 2026. After that, demand for deferred exterior cleaning typically spikes — scheduling extends and prices reflect it.</p>
+                <p>If you have moss on your roof, algae on your concrete, or a surface you're preparing for paint or sealant work, the health and safety exemption applies now.</p>
+            </div>
+            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> or call Daniel directly.</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><img src="images/phone.png" alt="Phone Icon" class="icon"> <a href="tel:7785128078" style="color:inherit; text-decoration:none;">(778) 512-8078</a></p>
+                <p><img src="images/mail.png" alt="Email Icon" class="icon"> daniel@renderexteriors.ca</p>
+                <p><img src="images/pin.png" alt="Location Icon" class="icon"> Richmond, BC</p>
+            </div>
+            <div class="hours">
+                <h3>Hours of Operation</h3>
+                <p>Monday - Saturday: 8 AM - 8 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js?v=5"></script>
+    <script>
+        function openPost(id) {
+            document.getElementById(id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePost(e, id) {
+            if (e.target === e.currentTarget) closePostById(id);
+        }
+        function closePostById(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.post-overlay.open').forEach(function(el) {
+                    el.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
