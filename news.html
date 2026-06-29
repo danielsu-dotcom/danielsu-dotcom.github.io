@@ -207,6 +207,41 @@
             font-weight: bold;
         }
 
+        /* Related posts section inside modal */
+        .post-related {
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid #e8e0d4;
+        }
+        .post-related h3 {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #888;
+            margin: 0 0 16px;
+        }
+        .post-related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .post-related-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .post-related-links a:hover { color: #4a8a7a; }
+        .post-related-links a::before {
+            content: "→";
+            color: #4a8a7a;
+            font-weight: bold;
+        }
+
         @media (max-width: 720px) {
             .news-grid { grid-template-columns: 1fr; }
             .post-modal { padding: 32px 20px 28px; }
@@ -233,7 +268,6 @@
                     </div>
                 </li>
                 <li><a href="news.html">News</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </nav>
         <div class="quote-button">
@@ -253,7 +287,6 @@
                     </div>
                 </li>
                 <li><a href="news.html">News</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="contact.html">Get a Quote</a></li>
             </ul>
         </div>
@@ -362,9 +395,17 @@
                 <p><strong>Roof pitch and orientation</strong> — steeper pitches and south-facing sections dry faster and accumulate less growth. North-facing sections of a low-pitch roof will always need more frequent attention in Richmond.</p>
                 <h2>When to Book</h2>
                 <p>Moss removal can be done year-round. The most effective timing is autumn — treatment applied before the main growing season (November through March) means the colony is killed before it has its most productive growth period. Spring treatment is the most popular because the problem is most visible, but autumn is more efficient.</p>
-                <p>Roof moss removal in Richmond typically runs $400–$800 depending on roof size and access. That's a fraction of what shingle or decking repair costs once water intrusion has had time to work.</p>
+                <p><a href="services/roof-washing.html">Roof moss removal in Richmond</a> typically runs $400–$800 depending on roof size and access. That's a fraction of what shingle or decking repair costs once water intrusion has had time to work.</p>
             </div>
-            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> or call Daniel directly.</div>
+            <div class="post-cta">Get a free estimate at <a href="contact.html">renderexteriors.ca/contact</a> or call us at <a href="tel:7785128078">(778) 512-8078</a>.</div>
+            <div class="post-related">
+                <h3>Continue Reading</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-moss'); openPost('post-softwash')">Softwash vs Pressure Washing: What Richmond Roofs Actually Need</a>
+                    <a href="services/roof-washing.html">Roof Washing &amp; Moss Removal — services we offer</a>
+                    <a href="services/gutter-cleaning.html">Gutter Cleaning — Protect Your Roofline Year-Round →</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -392,10 +433,18 @@
                 <p>On concrete, pavers, and hard driveways — high pressure is appropriate and effective. These surfaces don't have granule coatings or adhesive seals to protect. They benefit from mechanical force because moss and algae roots anchor into porous surfaces that chemical solutions penetrate more slowly.</p>
                 <p>The rule: hard impermeable surfaces get pressure. Roofs, siding, and painted surfaces get softwash.</p>
                 <h2>What to Ask Any Cleaning Company</h2>
-                <p>Before booking a roof cleaning, ask whether they use true low-pressure softwash or whether they call pressure washing "soft wash" because they lowered the PSI slightly. The difference is whether they're applying chemical treatment or just water.</p>
-                <p>Render Exteriors uses a two-tank proportioner system for softwash delivery. The SH concentration is calibrated per job based on moss density and roof material. Concrete jobs use high-pressure equipment.</p>
+                <p>Before booking a <a href="services/roof-washing.html">roof cleaning</a>, ask whether they use true low-pressure softwash or whether they call pressure washing "soft wash" because they lowered the PSI slightly. The difference is whether they're applying chemical treatment or just water.</p>
+                <p>Render Exteriors uses a two-tank proportioner system for softwash delivery. The SH concentration is calibrated per job based on moss density and roof material. <a href="services/pressure-washing.html">Concrete jobs use high-pressure equipment.</a></p>
             </div>
-            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a></div>
+            <div class="post-cta">Get a free estimate at <a href="contact.html">renderexteriors.ca/contact</a> or call <a href="tel:7785128078">(778) 512-8078</a>.</div>
+            <div class="post-related">
+                <h3>Continue Reading</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-softwash'); openPost('post-moss')">Why Roof Moss Keeps Coming Back (And What Actually Stops It)</a>
+                    <a href="services/roof-washing.html">Roof Washing &amp; Softwash — services we offer</a>
+                    <a href="services/pressure-washing.html">Pressure Washing — Driveways &amp; Concrete →</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -423,7 +472,16 @@
                 <p>Depreciation assessments are scheduled by the strata corporation. If your assessment is this summer or fall, booking exterior cleaning now allows time for the work to be completed and documentation assembled before the assessor arrives.</p>
                 <p>For large strata complexes, scheduling in June or July is advisable. Demand increases as councils realise the deadline is close.</p>
             </div>
-            <div class="post-cta">Strata inquiries: <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> — Daniel provides in-person estimates for strata properties and delivers dated before/after documentation with every job.</div>
+            <div class="post-cta">Strata inquiries: <a href="contact.html">renderexteriors.ca/contact</a> — we provide in-person estimates for strata properties and deliver dated before/after documentation with every job.</div>
+            <div class="post-related">
+                <h3>Continue Reading</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-strata'); openPost('post-moss')">Why Roof Moss Keeps Coming Back (And What Actually Stops It)</a>
+                    <a href="services/roof-washing.html">Roof Washing &amp; Moss Removal — services we offer</a>
+                    <a href="services/gutter-cleaning.html">Gutter Cleaning — services we offer</a>
+                    <a href="services/house-washing.html">House Washing — services we offer</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -450,9 +508,17 @@
                 <p>Render Exteriors operates a two-tank softwash system designed for low-water application. On roof jobs during the restriction period, we carry water in onboard tanks rather than drawing from your home's supply, which keeps the service both compliant and uninterrupted.</p>
                 <h2>Book Before October 15</h2>
                 <p>Restrictions lift on October 15, 2026. After that, demand for deferred exterior cleaning typically spikes — scheduling extends and prices reflect it.</p>
-                <p>If you have moss on your roof, algae on your concrete, or a surface you're preparing for paint or sealant work, the health and safety exemption applies now.</p>
+                <p>If you have <a href="services/roof-washing.html">moss on your roof</a>, <a href="services/pressure-washing.html">algae on your concrete</a>, or a surface you're preparing for paint or sealant work, the health and safety exemption applies now.</p>
             </div>
-            <div class="post-cta">Get a free estimate at <a href="https://renderexteriors.ca/contact.html">renderexteriors.ca</a> or call Daniel directly.</div>
+            <div class="post-cta">Get a free estimate at <a href="contact.html">renderexteriors.ca/contact</a> or call us at <a href="tel:7785128078">(778) 512-8078</a>.</div>
+            <div class="post-related">
+                <h3>Continue Reading</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-water'); openPost('post-softwash')">Softwash vs Pressure Washing: What Richmond Roofs Actually Need</a>
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-water'); openPost('post-moss')">Why Roof Moss Keeps Coming Back (And What Actually Stops It)</a>
+                    <a href="services/pressure-washing.html">Pressure Washing — services we offer</a>
+                </div>
+            </div>
         </div>
     </div>
 
