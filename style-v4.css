@@ -332,8 +332,9 @@ footer {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: inherit;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8);
     color: black;
 }
 
@@ -469,7 +470,8 @@ footer {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #3d7a6a;
+    background-color: #e8dcc8;
+    color: #1a1a1a;
 }
 
 /* Show the dropdown menu on hover */
@@ -658,7 +660,7 @@ footer {
     }
 }
 .house_washing {
-    background-image: url('images/5.png');
+    background-image: url('images/house-wash-hero.jpg');
     background-size: cover;
     background-position: center;
     height: 400px; 
@@ -678,7 +680,7 @@ footer {
     background-color: rgba(0,0,0,0.4); 
 }
 
-.house_washing h2 {
+.house_washing h1 {
     font-size: 48px;  
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
@@ -806,7 +808,7 @@ footer {
         height: 300px;
     }
     
-    .house_washing h2 {
+    .house_washing h1 {
         font-size: 42px;
         padding: 20px;
     }
@@ -834,7 +836,7 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    .house_washing h2 {
+    .house_washing h1 {
         font-size: 32px;
     }
     
@@ -877,7 +879,7 @@ footer {
     background-color: rgba(0,0,0,0.4); 
 }
 
-.gutter_cleaning h2 {
+.gutter_cleaning h1 {
     font-size: 48px;  
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
@@ -896,6 +898,7 @@ footer {
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
+.gutter_description h2,
 .gutter_description h3 {
     font-size: 32px;
     color: #333;
@@ -905,6 +908,7 @@ footer {
     padding-bottom: 15px;
 }
 
+.gutter_description h2::after,
 .gutter_description h3::after {
     content: '';
     position: absolute;
@@ -925,6 +929,32 @@ footer {
     color: #44403C;
     margin-bottom: 10px;
     text-align: justify;
+}
+
+.gutter_description dl {
+    margin: 30px 0;
+}
+
+.gutter_description dt {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 8px;
+    margin-top: 25px;
+}
+
+.gutter_description dt:first-child {
+    margin-top: 0;
+}
+
+.gutter_description dd {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #44403C;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 20px;
+    border-left: 3px solid #4a8a7a;
 }
 
 .gutter-image {
@@ -994,7 +1024,7 @@ footer {
         height: 250px; 
     }
     
-    .gutter_cleaning h2 {
+    .gutter_cleaning h1 {
         font-size: 36px; 
         padding: 15px 25px;
         width: 90%;
@@ -1006,12 +1036,14 @@ footer {
         border-radius: 8px;
     }
     
-    .gutter_description h3 {
+    .gutter_description h2,
+.gutter_description h3 {
         font-size: 26px; 
         margin-bottom: 20px;
     }
     
-    .gutter_description h3::after {
+    .gutter_description h2::after,
+.gutter_description h3::after {
         width: 80px; 
         height: 3px;
     }
@@ -1061,12 +1093,13 @@ footer {
         height: 200px; 
     }
     
-    .gutter_cleaning h2 {
+    .gutter_cleaning h1 {
         font-size: 28px;
         padding: 12px 20px;
     }
     
-    .gutter_description h3 {
+    .gutter_description h2,
+.gutter_description h3 {
         font-size: 22px; 
     }
     
@@ -1093,7 +1126,7 @@ footer {
 }
 
 .pressure_washing {
-    background-image: url('images/pressure_washer.jpeg');
+    background-image: url('images/pressure-washing-hero.jpeg');
     background-size: cover;
     background-position: center;
     height: 400px; 
@@ -1113,7 +1146,7 @@ footer {
     background-color: rgba(0,0,0,0.4); 
 }
 
-.pressure_washing h2 {
+.pressure_washing h1 {
     font-size: 48px;  
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
@@ -1129,7 +1162,7 @@ footer {
         height: 300px;
     }
     
-    .pressure_washing h2 {
+    .pressure_washing h1 {
         font-size: 42px;
         padding: 20px;
     }
@@ -1137,7 +1170,7 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    .pressure_washing h2 {
+    .pressure_washing h1 {
         font-size: 32px;
     }
     
@@ -1164,7 +1197,7 @@ footer {
     background-color: rgba(0,0,0,0.4); 
 }
 
-.roof_washing h2 {
+.roof_washing h1 {
     font-size: 48px;  
     color: white;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
@@ -1180,7 +1213,7 @@ footer {
         height: 300px;
     }
     
-    .roof_washing h2 {
+    .roof_washing h1 {
         font-size: 42px;
         padding: 20px;
     }
@@ -1188,7 +1221,7 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    .roof_washing h2 {
+    .roof_washing h1 {
         font-size: 32px;
     }
     
@@ -1467,9 +1500,11 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.service-card.active {
+.service-card.active,
+.service-card.active:hover {
     border-color: #4a8a7a;
-    background-color: rgba(74, 138, 122, 0.22);
+    background-color: #4a8a7a;
+    color: white;
 }
 
 .card-check {
@@ -1485,6 +1520,7 @@ footer {
 
 .service-card.active .card-check {
     display: block;
+    color: white;
 }
 
 /* Inline validation error */
@@ -1543,9 +1579,11 @@ footer {
     background-color: rgba(74, 138, 122, 0.08);
 }
 
-.contact_page .service-card.active {
+.contact_page .service-card.active,
+.contact_page .service-card.active:hover {
     border-color: #4a8a7a;
-    background-color: rgba(74, 138, 122, 0.14);
+    background-color: #4a8a7a;
+    color: white;
 }
 
 .contact_page .form-error {
@@ -1651,13 +1689,19 @@ footer {
     background-color: #E8E6E0;
 }
 
-#contact-form .service-card.active {
+#contact-form .service-card.active,
+#contact-form .service-card.active:hover {
     border: 2px solid #7A8A6F;
-    background-color: rgba(122, 138, 111, 0.1);
+    background-color: #7A8A6F;
+    color: white;
 }
 
 #contact-form .card-check {
     color: #7A8A6F;
+}
+
+#contact-form .service-card.active .card-check {
+    color: white;
 }
 
 #contact-form .form-group input,

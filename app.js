@@ -206,6 +206,27 @@ function sendeMail(){
     });
 })();
 
+// Before/After image sliders
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.ba-slider').forEach(function (slider) {
+        var before = slider.querySelector('.ba-before');
+        var beforeImg = slider.querySelector('.ba-before img');
+        var handleLine = slider.querySelector('.ba-handle-line');
+        var range = slider.querySelector('.ba-range');
+
+        function syncImgWidth() {
+            if (beforeImg) beforeImg.style.width = slider.offsetWidth + 'px';
+        }
+        syncImgWidth();
+        window.addEventListener('resize', syncImgWidth);
+
+        range.addEventListener('input', function () {
+            before.style.width = this.value + '%';
+            handleLine.style.left = this.value + '%';
+        });
+    });
+});
+
 // Gallery Lightbox Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = document.querySelectorAll('.gallery img');
