@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>资讯 — 列治文外墙清洗知识与本地动态 | Render Exteriors</title>
+    <meta name="description" content="来自 Render Exteriors 的屋顶保养、外墙清洗知识与列治文本地资讯。屋顶除青苔、软洗与高压清洗的区别、大温用水限制说明等。">
+    <link rel="stylesheet" href="../style-v4.css?v=18">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="canonical" href="https://renderexteriors.ca/zh/news.html">
+    <link rel="alternate" hreflang="en" href="https://renderexteriors.ca/news.html">
+    <link rel="alternate" hreflang="zh" href="https://renderexteriors.ca/zh/news.html">
+    <link rel="alternate" hreflang="x-default" href="https://renderexteriors.ca/news.html">
+    <style>
+        .news-section {
+            background: #f5f0e8;
+            padding: 64px 0 80px;
+        }
+        .news-section h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 0 0 8px;
+        }
+        .news-section .news-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 48px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px 28px;
+            border: 1px solid #e0d9cf;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .news-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+            transform: translateY(-2px);
+        }
+        .news-tag {
+            display: inline-block;
+            background: #4a8a7a;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            width: fit-content;
+        }
+        .news-card h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin: 0 0 12px;
+        }
+        .news-card p {
+            font-size: 15px;
+            color: #44403c;
+            line-height: 1.65;
+            margin: 0 0 20px;
+            flex: 1;
+        }
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: #888;
+            padding-top: 16px;
+            border-top: 1px solid #e8e0d4;
+        }
+        .news-meta-dot {
+            width: 3px;
+            height: 3px;
+            background: #bbb;
+            border-radius: 50%;
+        }
+        .news-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4a8a7a;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 4px;
+        }
+        .news-read-more:hover {
+            color: #3d7a6a;
+        }
+        .news-read-more svg {
+            transition: transform 0.15s;
+        }
+        .news-read-more:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Modal overlay */
+        .post-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 16px;
+        }
+        .post-overlay.open {
+            display: block;
+        }
+        .post-modal {
+            background: #fff;
+            max-width: 760px;
+            margin: 0 auto;
+            border-radius: 12px;
+            padding: 48px 48px 40px;
+            position: relative;
+        }
+        .post-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+        .post-close:hover { color: #1a1a1a; }
+        .post-modal .post-tag {
+            display: inline-block;
+            background: #4a8a7a;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        .post-modal h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.35;
+            margin: 0 0 12px;
+        }
+        .post-modal .post-meta {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8e0d4;
+        }
+        .post-modal .post-body {
+            font-size: 16px;
+            color: #2c2c2c;
+            line-height: 1.85;
+        }
+        .post-modal .post-body h2 {
+            font-size: 19px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 32px 0 10px;
+        }
+        .post-modal .post-body p {
+            margin: 0 0 16px;
+        }
+        .post-modal .post-body strong {
+            color: #1a1a1a;
+        }
+        .post-modal .post-body a {
+            color: #4a8a7a;
+            text-decoration: underline;
+        }
+        .post-cta {
+            margin-top: 32px;
+            padding: 20px 24px;
+            background: #f0ece4;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1a1a1a;
+        }
+        .post-cta a {
+            color: #4a8a7a;
+            font-weight: bold;
+        }
+
+        /* Related posts section inside modal */
+        .post-related {
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid #e8e0d4;
+        }
+        .post-related h3 {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            color: #888;
+            margin: 0 0 16px;
+        }
+        .post-related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .post-related-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .post-related-links a:hover { color: #4a8a7a; }
+        .post-related-links a::before {
+            content: "→";
+            color: #4a8a7a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 720px) {
+            .news-grid { grid-template-columns: 1fr; }
+            .post-modal { padding: 32px 20px 28px; }
+            .news-section h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../images/render-logo.png?v=5" alt="Render Exteriors — 列治文外墙清洗公司"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">服务项目</a>
+                    <div class="dropdown-content">
+                        <a href="services.html#pressure-washing">高压清洗</a>
+                        <a href="services.html#house-washing">外墙清洗</a>
+                        <a href="services.html#gutter-cleaning">雨水槽清理</a>
+                        <a href="services.html#roof-washing">屋顶清洗</a>
+                    </div>
+                </li>
+                <li><a href="news.html">资讯</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switch dropdown">
+            <span class="lang-current dropbtn">中文 ▾</span>
+            <div class="dropdown-content lang-menu">
+                <a href="../news.html">English</a>
+                <a href="news.html">中文</a>
+            </div>
+        </div>
+
+        <div class="quote-button">
+            <a href="contact.html">免费报价</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">服务项目</a>
+                    <div class="dropdown-content">
+                        <a href="services.html#pressure-washing">高压清洗</a>
+                        <a href="services.html#house-washing">外墙清洗</a>
+                        <a href="services.html#gutter-cleaning">雨水槽清理</a>
+                        <a href="services.html#roof-washing">屋顶清洗</a>
+                    </div>
+                </li>
+                <li><a href="news.html">资讯</a></li>
+                <li><a href="../news.html">English</a></li>
+                <li><a href="contact.html">免费报价</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="news-section">
+        <div class="section-inner">
+            <h1>资讯与保养知识</h1>
+            <p class="news-subtitle">来自 Render Exteriors 的保养技巧、清洗知识与本地动态。</p>
+
+            <div class="news-grid">
+
+                <!-- Post 1: Most recent — June 20 -->
+                <div class="news-card" onclick="openPost('post-water')">
+                    <span class="news-tag">本地资讯</span>
+                    <h2>大温三级用水限制期间，还能做外墙清洗吗？</h2>
+                    <p>三级用水限制持续至 10 月 15 日。很多业主以为外墙清洗全面暂停——其实不然。除青苔、除藻类、消除防滑隐患等项目仍可正常进行。</p>
+                    <div class="news-meta">
+                        <span>2026 年 6 月 20 日</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 分钟阅读</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-water')">
+                        阅读全文
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 2 — June 5 -->
+                <div class="news-card" onclick="openPost('post-strata')">
+                    <span class="news-tag">物业管理</span>
+                    <h2>2026 年 7 月折旧报告前，如何准备物业的外部清洁</h2>
+                    <p>BC 省更新后的物业折旧报告要求已于 2026 年 7 月生效。房屋外部状况直接影响储备金评估。评估师上门前，这些准备工作值得提前做好。</p>
+                    <div class="news-meta">
+                        <span>2026 年 6 月 5 日</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 分钟阅读</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-strata')">
+                        阅读全文
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 3 — May 14 -->
+                <div class="news-card" onclick="openPost('post-softwash')">
+                    <span class="news-tag">科普知识</span>
+                    <h2>软洗与高压清洗的区别：列治文的屋顶到底需要哪一种？</h2>
+                    <p>高压冲洗屋顶会使质保失效，还会打掉屋瓦表面的保护颗粒。为什么软洗才是厂商推荐的除青苔方式？本文为您讲清楚。</p>
+                    <div class="news-meta">
+                        <span>2026 年 5 月 14 日</span>
+                        <span class="news-meta-dot"></span>
+                        <span>2 分钟阅读</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-softwash')">
+                        阅读全文
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <!-- Post 4: Oldest — April 28 -->
+                <div class="news-card" onclick="openPost('post-moss')">
+                    <span class="news-tag">屋顶保养</span>
+                    <h2>为什么屋顶青苔总是除不干净？（以及真正有效的方法）</h2>
+                    <p>列治文屋顶的青苔生长速度几乎是大温之最。青苔如何损坏屋瓦、为什么光靠刷除没有用、什么处理方式才能真正防止复发——一文说清。</p>
+                    <div class="news-meta">
+                        <span>2026 年 4 月 28 日</span>
+                        <span class="news-meta-dot"></span>
+                        <span>3 分钟阅读</span>
+                    </div>
+                    <a class="news-read-more" onclick="event.stopPropagation(); openPost('post-moss')">
+                        阅读全文
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── POST MODALS ── -->
+
+    <!-- Moss Post -->
+    <div class="post-overlay" id="post-moss" onclick="closePost(event, 'post-moss')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-moss')">&times;</button>
+            <span class="post-tag">屋顶保养</span>
+            <h1>为什么屋顶青苔总是除不干净？（以及真正有效的方法）</h1>
+            <div class="post-meta">2026 年 4 月 28 日 &nbsp;&middot;&nbsp; 3 分钟阅读</div>
+            <div class="post-body">
+                <p>列治文屋顶的青苔生长速度几乎是大温之最。这里地处海平面高度，年降雨量超过 1,100 毫米，许多住宅区树木繁茂。朝北的屋顶常常连续数周保持潮湿。</p>
+                <p>而这正是青苔最喜欢的环境。</p>
+                <h2>青苔究竟对屋顶做了什么</h2>
+                <p>肉眼可见的绿色只是表面——青苔的菌落同时在屋瓦下方蔓延。它通过假根（细如毛发的根状结构）钻进瓦片颗粒之间的缝隙和瓦片边缘。随着菌落扩张，它会顶起将每片瓦粘合在下层瓦上的胶条。</p>
+                <p>密封一旦破坏，雨水便会渗入瓦片下方，积聚、在寒潮中结冰膨胀。下面的屋顶板吸收水分，几个雨季之后就会开始腐烂。更换受损屋顶板的花费，通常超过十年定期清洗的总和。</p>
+                <p>沥青瓦表面的颗粒涂层保护瓦芯免受紫外线侵蚀。青苔将湿气锁在颗粒表面，加速颗粒脱落，直接缩短屋瓦的使用寿命。</p>
+                <h2>为什么刷除没有用</h2>
+                <p>干刷或铲除只能去掉表面可见的青苔，假根仍附着在瓦片上。往往一个生长季（通常是当年秋天）之后，菌落就会从未被处理的根部重新长出。</p>
+                <p>只做物理清除、不做药剂处理，看起来立竿见影，实际上不到 12 个月就打回原形。</p>
+                <h2>软洗处理的原理</h2>
+                <p>软洗以低压方式喷洒稀释的次氯酸钠溶液。溶液渗透整个青苔菌落，从生物层面将其杀灭——包括假根。生长立即停止，接下来几周雨水会自然冲走枯死的青苔，全程无需刷洗、不与屋瓦发生机械接触。</p>
+                <p>由于根部被杀灭而非仅仅被扰动，复发速度显著放缓。在列治文的气候下，经过规范处理的屋顶通常可保持 2 至 4 年干净，具体取决于树荫遮挡和日照情况。</p>
+                <h2>如何延长清洗间隔</h2>
+                <p><strong>修剪悬垂树枝</strong> —— 树枝落叶堆积并遮挡阳光会加速青苔复发。修剪伸到屋顶上方的树枝，是业主延长屋顶干净时间最有效的办法。</p>
+                <p><strong>安装锌条或铜条</strong> —— 安装在屋脊处，下雨时微量金属离子随雨水流向屋面。青苔和藻类对铜、锌十分敏感，可有效抑制下方区域复发。它不能替代对活菌落的清洗，但作为长期预防非常有效。</p>
+                <p><strong>屋顶坡度与朝向</strong> —— 坡度越陡、朝南的屋面干得越快，青苔越少。在列治文，低坡度屋顶的北面永远需要更频繁的关注。</p>
+                <h2>什么时候预约最合适</h2>
+                <p>除青苔全年都可进行，但最有效的时机是秋季——在主要生长季（11 月至次年 3 月）之前处理，菌落还没进入最旺盛的生长期就已被杀灭。春季预约最多，因为问题最显眼；但从效果上讲，秋季更划算。</p>
+                <p>在列治文，屋顶除青苔的价格通常为 $400–$800，视屋顶面积和作业难度而定——与雨水渗入后维修屋瓦或屋顶板的花费相比，只是零头。</p>
+            </div>
+            <div class="post-cta">获取免费报价：<a href="contact.html">点此联系我们</a>，或致电 <a href="tel:7785128078">(778) 512-8078</a>。</div>
+            <div class="post-related">
+                <h3>继续阅读</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-moss'); openPost('post-softwash')">软洗与高压清洗的区别：列治文的屋顶到底需要哪一种？</a>
+                    <a href="services.html#roof-washing">屋顶清洗 · 除青苔 — 我们的服务</a>
+                    <a href="services.html#gutter-cleaning">雨水槽清理 — 全年保护您的屋檐</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Softwash Post -->
+    <div class="post-overlay" id="post-softwash" onclick="closePost(event, 'post-softwash')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-softwash')">&times;</button>
+            <span class="post-tag">科普知识</span>
+            <h1>软洗与高压清洗的区别：列治文的屋顶到底需要哪一种？</h1>
+            <div class="post-meta">2026 年 5 月 14 日 &nbsp;&middot;&nbsp; 2 分钟阅读</div>
+            <div class="post-body">
+                <p>搜索屋顶清洗时，多数业主都会看到两个词：软洗（softwash）和高压清洗（pressure washing）。听起来像是同一种服务的两个版本——其实完全不同。</p>
+                <p>在列治文的屋顶上用错方法，造成的损坏质保是不赔的。</p>
+                <h2>高压清洗对沥青瓦的伤害</h2>
+                <p>高压清洗将水流以极高压强从喷嘴射出。在车道和混凝土这类坚硬、致密、不渗水的表面上，高压完全没问题。但在沥青瓦上，它会打掉保护瓦芯免受紫外线侵蚀的颗粒涂层——而这些颗粒是不会「长回来」的。</p>
+                <p>加拿大沥青瓦制造商协会（CASMA）正因如此不建议对屋顶做高压清洗。许多屋瓦质保明确将高压清洗造成的损坏排除在外。如果您的屋顶还在保修期内却被高压冲洗过，您花钱买的保障可能已经失效。</p>
+                <h2>软洗的工作原理</h2>
+                <p>软洗使用低压——通常低于 100 PSI，而高压清洗机是 2,000–4,000 PSI——配合稀释的次氯酸钠溶液。起作用的是药剂，不是冲力。</p>
+                <p>喷洒在长青苔的屋顶上，溶液会从生物层面杀灭青苔、地衣和藻类。数天内生长停止，随后几周雨水自然冲净枯死物。不刷洗、不掉颗粒、不给屋瓦施加任何机械应力。</p>
+                <p>由于微生物被彻底消灭而非仅仅冲掉，效果比高压清洗多维持 2 至 4 年。</p>
+                <h2>为什么列治文的屋顶尤其需要软洗</h2>
+                <p>列治文地处海平面高度的海洋性气候区，年降雨量超过 1,100 毫米。朝北的屋面长期潮湿，青苔孢子还会随风从邻居家飘来。菌落一旦扎根，就会沿着屋顶的潮湿区域蔓延——通常是北面和被树荫遮挡的部分。</p>
+                <p>放任不管，青苔的根会钻进瓦片之间、顶开胶条密封，让雨水渗入。表面问题就此演变成腐烂问题。软洗只需几百加元，更换腐烂的屋顶板则要数千。</p>
+                <h2>什么情况适合高压清洗</h2>
+                <p>混凝土、砖石路面、车道——高压既合适又高效。这些表面没有颗粒涂层和胶条密封需要保护，而且青苔和藻类的根扎进多孔表面后，机械冲力反而比药剂渗透见效快。</p>
+                <p>一句话原则：坚硬不渗水的表面用高压；屋顶、外墙板和涂漆表面用软洗。</p>
+                <h2>选择清洗公司时该问什么</h2>
+                <p>预约屋顶清洗前，先问清对方用的是真正的低压软洗，还是只是把高压机调低一点就叫「软洗」。区别在于：到底有没有药剂处理，还是只是在喷水。</p>
+                <p>Render Exteriors 采用双罐比例混合系统进行软洗，次氯酸钠浓度根据每单的青苔密度和屋顶材质单独调配。混凝土项目则使用专业高压设备。</p>
+            </div>
+            <div class="post-cta">获取免费报价：<a href="contact.html">点此联系我们</a>，或致电 <a href="tel:7785128078">(778) 512-8078</a>。</div>
+            <div class="post-related">
+                <h3>继续阅读</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-softwash'); openPost('post-moss')">为什么屋顶青苔总是除不干净？（以及真正有效的方法）</a>
+                    <a href="services.html#roof-washing">屋顶清洗 · 软洗 — 我们的服务</a>
+                    <a href="services.html#pressure-washing">高压清洗 — 车道与混凝土</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Strata Post -->
+    <div class="post-overlay" id="post-strata" onclick="closePost(event, 'post-strata')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-strata')">&times;</button>
+            <span class="post-tag">物业管理</span>
+            <h1>2026 年 7 月折旧报告前，如何准备物业的外部清洁</h1>
+            <div class="post-meta">2026 年 6 月 5 日 &nbsp;&middot;&nbsp; 2 分钟阅读</div>
+            <div class="post-body">
+                <p>BC 省《共管物业法》（Strata Property Act）要求超过五个单元的物业公司每三年出具一份折旧报告。对大温、菲沙河谷及首府地区的物业而言，更新后的要求已于 2026 年 7 月生效。</p>
+                <p>折旧报告会预测每个主要建筑部件的剩余寿命和更换成本。外部表面——屋顶、外墙、雨水槽、混凝土步道——属于成本最高的几项。它们的保养状况，直接影响报告建议的储备金缴纳额度。</p>
+                <h2>清洁如何影响报告结果</h2>
+                <p>折旧评估除了技术检测数据，也看外观状况和保养记录。一个青苔丛生的屋顶，无论实际瓦龄多少，都会被判定为疏于维护；藻类污染的外墙会让评估师直接下调外墙系统的预估剩余寿命。</p>
+                <p>有记录的定期清洁则恰恰相反：它证明物业对建筑部件进行了持续维护，从而延长预估寿命、降低更换成本估算，支撑更低的储备金缴纳方案。同样是第 12 年的屋顶，「保养良好」和「疏于维护」的更换时间表完全不同。</p>
+                <h2>需要准备哪些文件</h2>
+                <p>评估师上门时，请为外部部件备好以下材料：</p>
+                <p>近三年内屋顶清洗或除青苔的服务记录（含日期和采用的方法）；清洗工程的前后对比照片——正规公司都会提供；以及任何注明保养要求的厂商质保文件。</p>
+                <p>Render Exteriors 为每个物业项目提供书面服务记录和标注日期的前后对比照片，可直接归入您的维护档案。</p>
+                <h2>业主大会上的沟通</h2>
+                <p>当外部维护看得见、有记录时，物业委员会开业主大会就轻松得多。对储备金缴纳有异议的业主，看到维护良好的照片证据，远比看报告里的条目更容易被说服。</p>
+                <p>在报告出具前完成一次外部清洁——并留好文件——能让委员会拿出实实在在的东西。</p>
+                <h2>时间安排</h2>
+                <p>折旧评估由物业公司自行安排。如果您的评估在今年夏秋进行，现在预约外部清洁，还来得及在评估师上门前完成工程并整理好文件。</p>
+                <p>大型物业建议在 6、7 月安排。随着各物业委员会意识到期限临近，需求会明显上升。</p>
+            </div>
+            <div class="post-cta">物业垂询：<a href="contact.html">点此联系我们</a> —— 我们为物业提供上门评估，每个项目均附标注日期的前后对比照片。</div>
+            <div class="post-related">
+                <h3>继续阅读</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-strata'); openPost('post-moss')">为什么屋顶青苔总是除不干净？（以及真正有效的方法）</a>
+                    <a href="services.html#roof-washing">屋顶清洗 · 除青苔 — 我们的服务</a>
+                    <a href="services.html#gutter-cleaning">雨水槽清理 — 我们的服务</a>
+                    <a href="services.html#house-washing">外墙清洗 — 我们的服务</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Water Restrictions Post -->
+    <div class="post-overlay" id="post-water" onclick="closePost(event, 'post-water')">
+        <div class="post-modal">
+            <button class="post-close" onclick="closePostById('post-water')">&times;</button>
+            <span class="post-tag">本地资讯</span>
+            <h1>大温三级用水限制期间，还能做外墙清洗吗？</h1>
+            <div class="post-meta">2026 年 6 月 20 日 &nbsp;&middot;&nbsp; 2 分钟阅读</div>
+            <div class="post-body">
+                <p>大温地区已于 2026 年 6 月 8 日进入三级用水限制，持续至 10 月 15 日。以美观为目的的冲洗——车道、汽车、装饰性表面——被明令禁止。多数业主因此以为外墙清洗全面停摆。</p>
+                <p>其实不然。</p>
+                <h2>三级限水究竟限制什么</h2>
+                <p>《大温饮用水节约条例》禁止的是出于美观目的冲洗不渗水表面。而出于健康与安全原因的商业清洁，或为涂漆等处理做表面准备的清洗，是允许的。</p>
+                <p>对屋顶长青苔、混凝土长藻类、外墙有微生物滋生的业主来说，这个区别很关键。</p>
+                <h2>哪些项目仍可正常进行</h2>
+                <p><strong>屋顶除青苔、除藻类</strong>属于健康与安全类工程。青苔将湿气锁在屋瓦上，加速腐烂，还可能使厂商质保失效。加拿大沥青瓦制造商协会（CASMA）之所以把除青苔列为屋顶常规保养项目，正是因为青苔会随时间造成结构性损坏。</p>
+                <p><strong>混凝土表面的青苔藻类清除</strong>属于消除防滑隐患。车道、步道和露台上湿滑的藻类是切实的摔倒风险，清除它是安全措施。</p>
+                <p><strong>封层或涂漆前的表面准备</strong>同样允许。如果您计划给车道做封层或给外墙重新涂漆，专业清洗是被许可的前置步骤。</p>
+                <p><strong>不符合豁免的情况：</strong>纯美观性的冲洗——清洗一条既无安全隐患、也不做后续处理的车道或围栏。</p>
+                <h2>软洗的用水优势</h2>
+                <p>软洗的用水量只是高压清洗的一小部分。它不靠机械冲力，而是用低浓度次氯酸钠溶液从根部杀灭青苔、藻类和地衣。微生物枯死后，会在数周内自然脱落。</p>
+                <p>Render Exteriors 使用为低用水量设计的双罐软洗系统。限水期间的屋顶项目，我们用车载水罐自带用水、不接您家的水源——既合规，服务也不间断。</p>
+                <h2>10 月 15 日前预约更划算</h2>
+                <p>限制将于 2026 年 10 月 15 日解除。届时积压的清洗需求通常集中爆发——排期变长，价格也水涨船高。</p>
+                <p>如果您的屋顶有青苔、混凝土有藻类，或有表面需要为涂漆封层做准备，健康与安全豁免现在就适用。</p>
+            </div>
+            <div class="post-cta">获取免费报价：<a href="contact.html">点此联系我们</a>，或致电 <a href="tel:7785128078">(778) 512-8078</a>。</div>
+            <div class="post-related">
+                <h3>继续阅读</h3>
+                <div class="post-related-links">
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-water'); openPost('post-softwash')">软洗与高压清洗的区别：列治文的屋顶到底需要哪一种？</a>
+                    <a href="#" onclick="event.preventDefault(); closePostById('post-water'); openPost('post-moss')">为什么屋顶青苔总是除不干净？（以及真正有效的方法）</a>
+                    <a href="services.html#pressure-washing">高压清洗 — 我们的服务</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>联系我们</h3>
+                <p><img src="../images/phone.png" alt="电话" class="icon"> <a href="tel:7785128078" style="color:inherit; text-decoration:none;">(778) 512-8078</a></p>
+                <p><img src="../images/mail.png" alt="邮箱" class="icon"> daniel@renderexteriors.ca</p>
+                <p><img src="../images/pin.png" alt="地址" class="icon"> Richmond, BC</p>
+            </div>
+            <div class="hours">
+                <h3>营业时间</h3>
+                <p>周一至周六：早 8 点 - 晚 8 点</p>
+                <p>周日：休息</p>
+            </div>
+            <div class="footer-services">
+                <h3>服务项目</h3>
+                <p><a href="services.html#pressure-washing">高压清洗</a></p>
+                <p><a href="services.html#house-washing">外墙清洗</a></p>
+                <p><a href="services.html#gutter-cleaning">雨水槽清理</a></p>
+                <p><a href="services.html#roof-washing">屋顶清洗 · 除青苔</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../app.js?v=6"></script>
+    <script>
+        function openPost(id) {
+            document.getElementById(id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePost(e, id) {
+            if (e.target === e.currentTarget) closePostById(id);
+        }
+        function closePostById(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.post-overlay.open').forEach(function(el) {
+                    el.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

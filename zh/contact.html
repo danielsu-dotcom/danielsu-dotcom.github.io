@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>免费报价 — 列治文外墙清洗 | Render Exteriors</title>
+    <meta name="description" content="向 Render Exteriors 索取免费外墙清洗报价。服务列治文、温哥华、三角洲。致电 (778) 512-8078 或填写表格 — 当天回复。">
+    <link rel="stylesheet" href="../style-v4.css?v=18">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="canonical" href="https://renderexteriors.ca/zh/contact.html">
+    <link rel="alternate" hreflang="en" href="https://renderexteriors.ca/contact.html">
+    <link rel="alternate" hreflang="zh" href="https://renderexteriors.ca/zh/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://renderexteriors.ca/contact.html">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "zHgX3Rh4FEUz6nxAH",
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../images/render-logo.png?v=5" alt="Render Exteriors — 列治文外墙清洗公司"></a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">服务项目</a>
+                    <div class="dropdown-content">
+                        <a href="services.html#pressure-washing">高压清洗</a>
+                        <a href="services.html#house-washing">外墙清洗</a>
+                        <a href="services.html#gutter-cleaning">雨水槽清理</a>
+                        <a href="services.html#roof-washing">屋顶清洗</a>
+                    </div>
+                </li>
+                <li><a href="news.html">资讯</a></li>
+            </ul>
+        </nav>
+
+        <div class="lang-switch dropdown">
+            <span class="lang-current dropbtn">中文 ▾</span>
+            <div class="dropdown-content lang-menu">
+                <a href="../contact.html">English</a>
+                <a href="contact.html">中文</a>
+            </div>
+        </div>
+
+        <div class="quote-button">
+            <a href="contact.html">免费报价</a>
+        </div>
+
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">服务项目</a>
+                    <div class="dropdown-content">
+                        <a href="services.html#pressure-washing">高压清洗</a>
+                        <a href="services.html#house-washing">外墙清洗</a>
+                        <a href="services.html#gutter-cleaning">雨水槽清理</a>
+                        <a href="services.html#roof-washing">屋顶清洗</a>
+                    </div>
+                </li>
+                <li><a href="news.html">资讯</a></li>
+                <li><a href="contact.html">免费报价</a></li>
+                <li><a href="../contact.html">English</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="center">
+        <div class="contact_page">
+            <h2>立即联系我们，获取免费报价！</h2>
+            <h4>欢迎致电 <a href="tel:7785128078" style="color:inherit; text-decoration:none;">(778) 512-8078</a>，或填写以下表格获取免费评估。</h4>
+            <form id="form">
+                <input type="hidden" name="services" id="selected-services-input">
+
+                <!-- Stage 1: Service selection + address -->
+                <div id="stage-1">
+                    <p class="stage-label">第 1 步（共 2 步）— 选择服务项目</p>
+                    <div class="service-cards-grid">
+                        <div class="service-card" data-service="Pressure Washing"><span class="card-check">✓</span>高压清洗</div>
+                        <div class="service-card" data-service="House Washing"><span class="card-check">✓</span>外墙清洗</div>
+                        <div class="service-card" data-service="Gutter Cleaning"><span class="card-check">✓</span>雨水槽清理</div>
+                        <div class="service-card" data-service="Roof Washing"><span class="card-check">✓</span>屋顶清洗</div>
+                        <div class="service-card" data-service="Window Cleaning"><span class="card-check">✓</span>窗户清洗</div>
+                        <div class="service-card" data-service="Moss Removal"><span class="card-check">✓</span>除青苔</div>
+                    </div>
+                    <div class="form-page">
+                        <input type="text" name="address" id="address-input" placeholder="地址">
+                    </div>
+                    <div class="form-error" id="stage1-error"></div>
+                    <button type="button" class="contact-button" id="next-btn">下一步 →</button>
+                </div>
+
+                <!-- Stage 2: Contact details -->
+                <div id="stage-2" style="display:none">
+                    <p class="stage-label">第 2 步（共 2 步）— 您的联系方式</p>
+                    <div class="form-page">
+                        <input type="text" name="name" placeholder="姓名*">
+                    </div>
+                    <div class="form-page">
+                        <input type="tel" name="phone" placeholder="电话号码*">
+                    </div>
+                    <div class="form-page">
+                        <input type="email" name="email" placeholder="电子邮箱">
+                    </div>
+                    <div class="form-page">
+                        <textarea name="message" placeholder="补充说明（可选）" rows="3"></textarea>
+                    </div>
+                    <div class="form-error" id="stage2-error"></div>
+                    <div class="stage2-actions">
+                        <button type="button" class="back-btn" id="back-btn">← 上一步</button>
+                        <button type="button" class="contact-button" id="submit-btn">获取免费报价</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>联系我们</h3>
+                <p><img src="../images/phone.png" alt="电话" class="icon"> <a href="tel:7785128078" style="color:inherit; text-decoration:none;">(778) 512-8078</a></p>
+                <p><img src="../images/mail.png" alt="邮箱" class="icon"> daniel@renderexteriors.ca</p>
+                <p><img src="../images/pin.png" alt="地址" class="icon"> Richmond, BC</p>
+            </div>
+            <div class="hours">
+                <h3>营业时间</h3>
+                <p>周一至周六：早 8 点 - 晚 8 点</p>
+
+                <p>周日：休息</p>
+            </div>
+            <div class="footer-services">
+                <h3>服务项目</h3>
+                <p><a href="services.html#pressure-washing">高压清洗</a></p>
+                <p><a href="services.html#house-washing">外墙清洗</a></p>
+                <p><a href="services.html#gutter-cleaning">雨水槽清理</a></p>
+                <p><a href="services.html#roof-washing">屋顶清洗 · 除青苔</a></p>
+            </div>
+        </div>
+
+    </footer>
+    <script src="../app.js?v=6"></script>
+</body>
+
+</html>
